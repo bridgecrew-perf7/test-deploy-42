@@ -33,20 +33,20 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ github.token }}
         GH_REPO: jgustie/test-docs
+        FILENAME: posts/${{ github.event.release.tag_name }}.md
       run: |
         git config user.name github-actions
         git config user.email github-actions@github.com
-        git checkout -b 'releases/${{ github.event.release.tag_name }}'
+        git checkout -b 'test-deploy-${{ github.event.release.tag_name }}'
 
-        hugo new 'posts/${{ github.event.release.tag_name }}.md'
-        test-deploy >> 'content/posts/${{ github.event.release.tag_name }}.md'
-        cat << EOF >> 'posts/${{ github.event.release.tag_name }}.md'
-
+        hugo new "$FILENAME"
+        test-deploy >> "./content/$FILENAME"
+        cat << EOF >> "./content/$FILENAME"
         ${{ github.event.release.body }}
         EOF
+        git add "./content/$FILENAME"
 
-        git add content/posts
-        git commit -m 'test-deploy ${{ github.event.release.tag_name }}' -m 'Updates the documentation for the new release'
+        git commit -m 'test-deploy ${{ github.event.release.tag_name }}'
         git push origin HEAD
         gh pr create --fill
 
