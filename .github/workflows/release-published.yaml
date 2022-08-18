@@ -25,7 +25,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ github.token }}
       run: |
-        gh release download '${{ github.event.release.tag_name }}' -d './bin' -p '*_linux_amd64.tar.gz'
+        gh release download '${{ github.event.release.tag_name }}' --dir './bin' --pattern '*_linux_amd64.tar.gz'
         cd bin && tar xf *.tar.gz && rm *.tar.gz && echo "$PWD" >> $GITHUB_PATH
 
     - name: Update content
