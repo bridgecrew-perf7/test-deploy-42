@@ -24,6 +24,7 @@ jobs:
     - name: Download Release
       env:
         GITHUB_TOKEN: ${{ github.token }}
+        GH_REPO: ${{ github.repository }}
       run: |
         gh release download '${{ github.event.release.tag_name }}' --dir './bin' --pattern '*_linux_amd64.tar.gz'
         cd bin && tar xf *.tar.gz && rm *.tar.gz && echo "$PWD" >> $GITHUB_PATH
