@@ -6,3 +6,7 @@ This repo is a test, mostly for running GitHub Actions.
 $ test-deploy
 Hello, World!
 ```
+
+```console
+$ test-deploy
+```
