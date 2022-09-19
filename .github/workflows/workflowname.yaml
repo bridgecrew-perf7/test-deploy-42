@@ -1,0 +1,13 @@
+name: Such Custom ${{ github.event.inputs.tag_name }}
+on:
+  workflow_dispatch:
+    inputs:
+      tag_name:
+        description: The tag
+        required: true
+
+jobs:
+  echo:
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo '${{ github.event.inputs.tag_name }}'
