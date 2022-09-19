@@ -11,4 +11,6 @@ jobs:
     name: "Echo for ${{ github.event.inputs.tag_name }}"
     runs-on: ubuntu-latest
     steps:
-    - run: echo '${{ github.event.inputs.tag_name }}'
+    - run: |
+      echo 'The summary is...' > $GITHUB_STEP_SUMMARY
+      echo '${{ github.event.inputs.tag_name }}'
