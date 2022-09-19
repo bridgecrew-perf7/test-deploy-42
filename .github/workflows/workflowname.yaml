@@ -1,4 +1,4 @@
-name: Such Custom ${{ github.event.inputs.tag_name }}
+name: Such Custom Name
 on:
   workflow_dispatch:
     inputs:
@@ -8,6 +8,7 @@ on:
 
 jobs:
   echo:
+    name: "Echo for ${{ github.event.inputs.tag_name }}"
     runs-on: ubuntu-latest
     steps:
     - run: echo '${{ github.event.inputs.tag_name }}'
