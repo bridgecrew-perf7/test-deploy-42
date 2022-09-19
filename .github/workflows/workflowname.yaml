@@ -12,5 +12,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: |
-      echo 'The summary is...' > $GITHUB_STEP_SUMMARY
-      echo '${{ github.event.inputs.tag_name }}'
+        echo 'The summary is...' > $GITHUB_STEP_SUMMARY
+        echo '${{ github.event.inputs.tag_name }}'
